@@ -1,0 +1,8 @@
+local.properties
+.gradle/
+.idea/
+.kotlin/
+app/build/
+.DS_Store
+api-doc.md
+app/proguard-rules.pro
