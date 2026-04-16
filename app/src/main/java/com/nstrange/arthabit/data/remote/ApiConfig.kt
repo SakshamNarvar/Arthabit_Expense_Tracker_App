@@ -6,11 +6,11 @@ package com.nstrange.arthabit.data.remote
  * For physical device testing, replace with your machine's LAN IP.
  */
 object ApiConfig {
-    private const val HOST = "10.0.2.2"
+    private const val HOST = "arthabit-api.sakshamnarvar.tech"
 
-    const val AUTH_SERVICE_URL = "http://$HOST:9898"
-    const val USER_SERVICE_URL = "http://$HOST:9810"
-    const val EXPENSE_SERVICE_URL = "http://$HOST:9820"
-    const val DS_SERVICE_URL = "http://$HOST:8010"
+    const val AUTH_SERVICE_URL = "http://$HOST:80/auth-service/"
+    const val USER_SERVICE_URL = "http://$HOST:80/user-service/"
+    const val EXPENSE_SERVICE_URL = "http://$HOST:80/expense-service/"
+    const val DS_SERVICE_URL = "http://$HOST:80/ds-service/"
 }
 

@@ -13,22 +13,22 @@ import retrofit2.http.POST
 
 interface AuthApi {
 
-    @GET("/auth/v1/ping")
+    @GET("auth/v1/ping")
     suspend fun ping(
         @Header("Authorization") authHeader: String
     ): Response<ResponseBody>
 
-    @POST("/auth/v1/login")
+    @POST("auth/v1/login")
     suspend fun login(
         @Body request: LoginRequest
     ): Response<AuthResponse>
 
-    @POST("/auth/v1/signup")
+    @POST("auth/v1/signup")
     suspend fun signup(
         @Body request: SignupRequest
     ): Response<AuthResponse>
 
-    @POST("/auth/v1/refreshToken")
+    @POST("auth/v1/refreshToken")
     suspend fun refreshToken(
         @Body request: RefreshTokenRequest
     ): Response<AuthResponse>

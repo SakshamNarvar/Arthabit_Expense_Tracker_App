@@ -9,7 +9,7 @@ import retrofit2.http.POST
 
 interface DSApi {
 
-    @POST("/v1/ds/message")
+    @POST("v1/ds/message")
     suspend fun parseSms(
         @Header("x-user-id") userId: String,
         @Body request: DsMessageRequest

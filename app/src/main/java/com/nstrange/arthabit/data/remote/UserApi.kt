@@ -12,13 +12,13 @@ import retrofit2.http.Query
 
 interface UserApi {
 
-    @GET("/user/v1/users/{userId}")
+    @GET("user/v1/users/{userId}")
     suspend fun getUser(
         @Path("userId") userId: String,
         @Header("Authorization") authHeader: String? = null
     ): Response<UserDto>
 
-    @PUT("/user/v1/updateProfile")
+    @PUT("user/v1/updateProfile")
     suspend fun updateProfile(
         @Query("userId") userId: String,
         @Header("Authorization") authHeader: String,
