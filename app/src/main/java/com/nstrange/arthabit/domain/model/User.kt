@@ -5,7 +5,7 @@ data class User(
     val username: String? = null,
     val firstName: String,
     val lastName: String,
-    val phoneNumber: Long,
+    val phoneNumber: String,
     val email: String,
     val profilePic: String?
 ) {
@@ -16,6 +16,8 @@ data class User(
             val digits = phoneNumber.toString()
             return if (digits.length == 10) {
                 "(${digits.substring(0, 3)}) ${digits.substring(3, 6)}-${digits.substring(6)}"
+            } else if (digits.length > 10) {
+                "+$digits"
             } else {
                 digits
             }

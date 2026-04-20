@@ -64,6 +64,8 @@ dependencies {
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.lifecycle.viewmodel.compose)
 
+    implementation("com.hbb20:ccp:2.7.3")
+
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)

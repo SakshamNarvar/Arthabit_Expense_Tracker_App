@@ -10,7 +10,7 @@ interface AuthRepository {
         firstName: String,
         lastName: String,
         email: String,
-        phoneNumber: Long,
+        phoneNumber: String,
         password: String,
         passwordHint: String,
         username: String

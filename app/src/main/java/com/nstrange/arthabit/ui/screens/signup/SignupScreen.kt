@@ -1,6 +1,7 @@
 package com.nstrange.arthabit.ui.screens.signup
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -30,10 +32,12 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.nstrange.arthabit.ui.components.CustomBox
 import com.nstrange.arthabit.ui.theme.Primary
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignupScreen(
     onNavigateToHome: () -> Unit,
@@ -139,16 +143,35 @@ fun SignupScreen(
                     shape = RoundedCornerShape(10.dp)
                 )
 
-                OutlinedTextField(
-                    value = uiState.phoneNumber,
-                    onValueChange = viewModel::onPhoneNumberChange,
-                    label = { Text("Phone Number") },
-                    placeholder = { Text("Phone Number") },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-                    singleLine = true,
+                Row(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(10.dp)
-                )
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    AndroidView(
+                        factory = { context ->
+                            com.hbb20.CountryCodePicker(context).apply {
+                                setOnCountryChangeListener {
+                                    viewModel.onCountryCodeChange(selectedCountryCodeWithPlus)
+                                }
+                                // Initialize with the viewmodel's default if possible
+                                setCountryForPhoneCode(uiState.countryCode.replace("+", "").toIntOrNull() ?: 91)
+                            }
+                        },
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically)
+                    )
+
+                    OutlinedTextField(
+                        value = uiState.phoneNumber,
+                        onValueChange = viewModel::onPhoneNumberChange,
+                        label = { Text("Phone Number") },
+                        placeholder = { Text("Phone Number") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                        singleLine = true,
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(10.dp)
+                    )
+                }
 
                 // Error message
                 uiState.errorMessage?.let { error ->

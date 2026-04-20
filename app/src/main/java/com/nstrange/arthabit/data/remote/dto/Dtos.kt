@@ -13,7 +13,7 @@ data class SignupRequest(
     @SerializedName("first_name") val firstName: String,
     @SerializedName("last_name") val lastName: String,
     val email: String,
-    @SerializedName("phone_number") val phoneNumber: Long,
+    @SerializedName("phone_number") val phoneNumber: String,
     val password: String,
     @SerializedName("password_hint") val passwordHint: String,
     val username: String
@@ -36,7 +36,7 @@ data class UserDto(
     val username: String? = null,
     @SerializedName("first_name") val firstName: String,
     @SerializedName("last_name") val lastName: String,
-    @SerializedName("phone_number") val phoneNumber: Long,
+    @SerializedName("phone_number") val phoneNumber: String,
     val email: String,
     @SerializedName("profile_pic") val profilePic: String?
 )

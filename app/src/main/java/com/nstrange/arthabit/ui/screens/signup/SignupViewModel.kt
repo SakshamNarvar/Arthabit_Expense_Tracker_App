@@ -19,6 +19,7 @@ data class SignupUiState(
     val email: String = "",
     val password: String = "",
     val passwordHint: String = "",
+    val countryCode: String = "+91",
     val phoneNumber: String = "",
     val isLoading: Boolean = false,
     val errorMessage: String? = null,
@@ -57,6 +58,10 @@ class SignupViewModel @Inject constructor(
         _uiState.update { it.copy(passwordHint = value, errorMessage = null) }
     }
 
+    fun onCountryCodeChange(value: String) {
+        _uiState.update { it.copy(countryCode = value, errorMessage = null) }
+    }
+
     fun onPhoneNumberChange(value: String) {
         _uiState.update { it.copy(phoneNumber = value, errorMessage = null) }
     }
@@ -93,8 +98,9 @@ class SignupViewModel @Inject constructor(
             return
         }
 
-        val phone = state.phoneNumber.toLongOrNull()
-        if (phone == null) {
+        val combinedPhoneString = state.countryCode + state.phoneNumber.trim()
+        val phone = combinedPhoneString
+        if (phone.isBlank()) {
             _uiState.update { it.copy(errorMessage = "Invalid phone number") }
             return
         }
