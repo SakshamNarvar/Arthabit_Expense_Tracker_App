@@ -20,13 +20,15 @@ The application follows **Clean Architecture** (MVVM):
 - **Data Layer:** Repository implementations, Retrofit APIs (`AuthApi`, `UserApi`, `ExpenseApi`, `DSApi`), DTOs, and DataStore-based `TokenManager`.
 
 ## Backend Services
-Communicates with four Spring Boot microservices via REST APIs:
-- **Auth Service (9898):** Login, signup, token validation/refresh.
-- **User Service (9810):** User profile retrieval.
-- **Expense Service (9820):** Expense CRUD operations.
-- **DS Service (8010):** SMS parsing (`/v1/ds/message`) to auto-extract expenses.
+Communicates with four Spring Boot microservices via REST APIs. 
+👉 **[Backend Repository on GitHub](https://github.com/SakshamNarvar/Arthabit-Backend)** — The backend is currently hosted on AWS, but you can also clone and run the services locally for emulator testing.
 
-*Configure the IP in `ApiConfig.kt` to target a local emulator (`10.0.2.2`) or physical device connected over LAN.*
+- **Auth Service:** Login, signup, token validation/refresh.
+- **User Service:** User profile retrieval.
+- **Expense Service:** Expense CRUD operations.
+- **DS Service:** SMS parsing (`/v1/ds/message`) to auto-extract expenses.
+
+*Configure the base URLs in `ApiConfig.kt`. By default, it hits `arthabit-api.sakshamnarvar.tech` via an API Gateway. Change `HOST` to `10.0.2.2` with appropriate ports to target a local emulator or your physical device connected over LAN.*
 
 ## Features & Screens
 - **Login / Auto-Login:** Session restoration flows validating existing tokens.

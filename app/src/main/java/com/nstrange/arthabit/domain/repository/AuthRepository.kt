@@ -12,9 +12,9 @@ interface AuthRepository {
         email: String,
         phoneNumber: Long,
         password: String,
+        passwordHint: String,
         username: String
     ): Resource<AuthTokens>
     suspend fun refreshToken(): Resource<AuthTokens>
     suspend fun logout()
 }
-

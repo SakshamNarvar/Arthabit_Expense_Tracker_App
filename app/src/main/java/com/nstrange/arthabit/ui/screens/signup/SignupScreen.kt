@@ -129,6 +129,17 @@ fun SignupScreen(
                 )
 
                 OutlinedTextField(
+                    value = uiState.passwordHint,
+                    onValueChange = viewModel::onPasswordHintChange,
+                    label = { Text("Password Hint") },
+                    placeholder = { Text("Password Hint") },
+                    keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.None),
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(10.dp)
+                )
+
+                OutlinedTextField(
                     value = uiState.phoneNumber,
                     onValueChange = viewModel::onPhoneNumberChange,
                     label = { Text("Phone Number") },
@@ -190,4 +201,3 @@ fun SignupScreen(
         }
     }
 }
-

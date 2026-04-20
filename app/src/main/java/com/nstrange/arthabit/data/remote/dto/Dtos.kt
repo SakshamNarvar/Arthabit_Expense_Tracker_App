@@ -15,6 +15,7 @@ data class SignupRequest(
     val email: String,
     @SerializedName("phone_number") val phoneNumber: Long,
     val password: String,
+    @SerializedName("password_hint") val passwordHint: String,
     val username: String
 )
 

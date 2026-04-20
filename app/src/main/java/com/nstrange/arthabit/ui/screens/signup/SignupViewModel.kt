@@ -18,6 +18,7 @@ data class SignupUiState(
     val username: String = "",
     val email: String = "",
     val password: String = "",
+    val passwordHint: String = "",
     val phoneNumber: String = "",
     val isLoading: Boolean = false,
     val errorMessage: String? = null,
@@ -52,6 +53,10 @@ class SignupViewModel @Inject constructor(
         _uiState.update { it.copy(password = value, errorMessage = null) }
     }
 
+    fun onPasswordHintChange(value: String) {
+        _uiState.update { it.copy(passwordHint = value, errorMessage = null) }
+    }
+
     fun onPhoneNumberChange(value: String) {
         _uiState.update { it.copy(phoneNumber = value, errorMessage = null) }
     }
@@ -79,6 +84,10 @@ class SignupViewModel @Inject constructor(
             _uiState.update { it.copy(errorMessage = "Password is required") }
             return
         }
+        if (state.passwordHint.isBlank()) {
+            _uiState.update { it.copy(errorMessage = "Password hint is required") }
+            return
+        }
         if (state.phoneNumber.isBlank()) {
             _uiState.update { it.copy(errorMessage = "Phone number is required") }
             return
@@ -99,6 +108,7 @@ class SignupViewModel @Inject constructor(
                 email = state.email.trim(),
                 phoneNumber = phone,
                 password = state.password.trim(),
+                passwordHint = state.passwordHint.trim(),
                 username = state.username.trim()
             )
 

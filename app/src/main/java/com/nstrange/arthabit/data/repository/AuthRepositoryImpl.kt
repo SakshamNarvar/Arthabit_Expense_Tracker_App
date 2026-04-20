@@ -65,6 +65,7 @@ class AuthRepositoryImpl @Inject constructor(
         email: String,
         phoneNumber: Long,
         password: String,
+        passwordHint: String,
         username: String
     ): Resource<AuthTokens> {
         return try {
@@ -75,6 +76,7 @@ class AuthRepositoryImpl @Inject constructor(
                     email = email,
                     phoneNumber = phoneNumber,
                     password = password,
+                    passwordHint = passwordHint,
                     username = username
                 )
             )
@@ -122,4 +124,3 @@ class AuthRepositoryImpl @Inject constructor(
         tokenManager.clearTokens()
     }
 }
-

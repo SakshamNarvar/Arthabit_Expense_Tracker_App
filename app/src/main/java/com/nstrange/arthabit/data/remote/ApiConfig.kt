@@ -7,10 +7,8 @@ package com.nstrange.arthabit.data.remote
  */
 object ApiConfig {
     private const val HOST = "arthabit-api.sakshamnarvar.tech"
-
-    const val AUTH_SERVICE_URL = "http://$HOST:80/auth-service/"
-    const val USER_SERVICE_URL = "http://$HOST:80/user-service/"
-    const val EXPENSE_SERVICE_URL = "http://$HOST:80/expense-service/"
-    const val DS_SERVICE_URL = "http://$HOST:80/ds-service/"
+    const val AUTH_SERVICE_URL = "https://$HOST/auth-service/"
+    const val USER_SERVICE_URL = "https://$HOST/user-service/"
+    const val EXPENSE_SERVICE_URL = "https://$HOST/expense-service/"
+    const val DS_SERVICE_URL = "https://$HOST/ds-service/"
 }
-
