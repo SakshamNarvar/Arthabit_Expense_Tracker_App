@@ -167,7 +167,7 @@ fun ProfileScreen(
                 )
 
                 Text(
-                    text = user?.userId ?: "",
+                    text = user?.username?.let { "@$it" } ?: "",
                     color = DarkTextSecondary,
                     fontSize = 13.sp
                 )

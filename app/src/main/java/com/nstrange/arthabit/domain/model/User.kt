@@ -2,6 +2,7 @@ package com.nstrange.arthabit.domain.model
 
 data class User(
     val userId: String,
+    val username: String? = null,
     val firstName: String,
     val lastName: String,
     val phoneNumber: Long,
@@ -20,4 +21,3 @@ data class User(
             }
         }
 }
-

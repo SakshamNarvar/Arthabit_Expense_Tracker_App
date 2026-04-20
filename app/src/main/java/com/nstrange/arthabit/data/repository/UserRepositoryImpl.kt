@@ -20,6 +20,7 @@ class UserRepositoryImpl @Inject constructor(
                 Resource.Success(
                     User(
                         userId = dto.userId,
+                        username = dto.username,
                         firstName = dto.firstName,
                         lastName = dto.lastName,
                         phoneNumber = dto.phoneNumber,
@@ -35,4 +36,3 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 }
-

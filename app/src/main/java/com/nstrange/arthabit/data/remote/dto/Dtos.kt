@@ -33,6 +33,7 @@ data class AuthResponse(
 
 data class UserDto(
     @SerializedName("user_id") val userId: String,
+    val username: String? = null,
     @SerializedName("first_name") val firstName: String,
     @SerializedName("last_name") val lastName: String,
     @SerializedName("phone_number") val phoneNumber: Long,
